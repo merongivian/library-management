@@ -26,4 +26,5 @@ group :test do
   gem 'foreigner-matcher'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', '~> 1.4.0'
+  gem 'database_cleaner'
 end
