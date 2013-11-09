@@ -11,3 +11,6 @@ development:
 test:
   <<: *local_defaults
   database: library_management_test
+
+cucumber:
+  <<: *test
