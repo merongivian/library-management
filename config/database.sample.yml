@@ -1,0 +1,13 @@
+default: &local_defaults
+  adapter: postgresql
+  host: localhost
+  encoding: utf8
+  username: postgres
+
+development:
+  <<: *local_defaults
+  database: library_management_development
+
+test:
+  <<: *local_defaults
+  database: library_management_test
