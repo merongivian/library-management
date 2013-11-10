@@ -1,0 +1,16 @@
+es:
+  title: Tu Libreria
+  layouts:
+    header:
+      title: Tu Libreria
+      home: Principal
+      sign_in: Iniciar Sesion
+      sign_out: Cerrar Sesion
+      books: Libros
+    footer:
+      copyright: © Merongivian Inc. %{year}
+  home:
+    index:
+      title: Tu Libreria en linea
+      body: Puedes escoger libros de nuestra gran coleccion. Crea tu cuenta ahora!!
+      sign_up: Crea tu cuenta

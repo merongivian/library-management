@@ -9,9 +9,13 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+#signin/signup
+gem 'devise'
+
 #html and stuff
-gem 'slim-rails', '~> 2.0.3'
-gem 'bootstrap-sass-rails', '~> 3.0.0.3'
+gem 'haml-rails'
+gem 'slim-rails'
+gem 'bootstrap-sass-rails'
 
 #schema
 gem 'foreigner'
@@ -26,5 +30,7 @@ group :test do
   gem 'foreigner-matcher'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', '~> 1.4.0'
+  gem 'webrat', '~> 0.7.3'
+  gem "selenium-webdriver", "~> 2.37.0"
   gem 'database_cleaner'
 end
