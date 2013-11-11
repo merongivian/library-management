@@ -1,5 +1,5 @@
 Feature: The Homepage
-  In order to use library management
+  In order to access library management
   As a new user that speaks any language
   I want to access the home page
 
@@ -23,4 +23,3 @@ Scenario: Page in english
 Scenario: Page in spanish
   Given I am a native "spanish" speaker
   Then I should see the page in "spanish"
-
