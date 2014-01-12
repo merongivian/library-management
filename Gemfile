@@ -20,8 +20,13 @@ gem 'bootstrap-sass-rails'
 #schema
 gem 'foreigner'
 
+group :development do
+  gem 'letter_opener'
+end
+
 group :developmet, :test do
   gem 'quiet_assets'
+  gem 'shoulda-matchers'
   gem 'rspec-rails', '~> 2.0'
 end
 

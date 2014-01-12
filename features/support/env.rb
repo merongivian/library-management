@@ -6,10 +6,29 @@
 
 require 'cucumber/rails'
 
-# Capybara defaults to CSS3 selectors rather than XPath.
-# If you'd prefer to use XPath, just uncomment this line and adjust any
-# selectors in your step definitions to use the XPath syntax.
-# Capybara.default_selector = :xpath
+# https://github.com/cucumber/cucumber/wiki/Mocking-and-Stubbing-with-Cucumber
+require 'cucumber/rspec/doubles'
+
+# Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
+# order to ease the transition to Capybara we set the default here. If you'd
+# prefer to use XPath just remove this line and adjust any selectors in your
+# steps to use the XPath syntax.
+Capybara.default_selector = :css
+Capybara.server_port = 60200
+Capybara.app_host = "http://localhost:#{Capybara.server_port}"
+
+# give selenium extra time
+Capybara.register_driver :selenium do |app|
+  http_client = Selenium::WebDriver::Remote::Http::Default.new
+  http_client.timeout = 300
+  Capybara::Selenium::Driver.new(app, browser: :firefox, http_client: http_client)
+end
+
+After("@javascript") do |s|
+  Capybara.send(:session_pool).delete_if {|k,v| k =~ /selenium/i } if s.exception.is_a? Timeout::Error
+end
+
+# Capybara.ignore_hidden_elements = true
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
@@ -36,14 +55,12 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 
+
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
 #   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     # { :except => [:widgets] } may not do what you expect here
-#     # as Cucumber::Rails::Database.javascript_strategy overrides
-#     # this setting.
-#     DatabaseCleaner.strategy = :truncation
+#     DatabaseCleaner.strategy = :truncation, {:except => %w[widgets]}
 #   end
 #
 #   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
@@ -51,9 +68,7 @@ end
 #   end
 #
 
-# Possible values are :truncation and :transaction
-# The :transaction strategy is faster, but might give you threading problems.
-# See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
-Cucumber::Rails::Database.javascript_strategy = :truncation
-Capybara.default_driver = :selenium
+After "@alert" do
+  page.driver.browser.switch_to.alert.dismiss
+end
 

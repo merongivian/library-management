@@ -1,7 +1,9 @@
 .header
   %ul.nav.nav-pills.pull-right
     %li.active= link_to t('.home'), '#'
-    %li= link_to t('.sign_in'), '#'
     %li= link_to t('.books'), '#'
-    %li= link_to t('.sign_out'), '#'
+    - if current_user
+      %li= link_to t('.sign_out'), destroy_user_session_path, method: :delete
+    - else
+      %li= link_to t('.sign_in'), new_user_session_path
   %h3.text-muted= t('.title')
