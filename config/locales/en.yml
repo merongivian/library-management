@@ -14,3 +14,8 @@ en:
       title: Your online library
       body: You can pick books from our great collection. Create your Membership Now!!
       sign_up: Sign up Today
+  author:
+    index:
+      name: Name
+      books: Books
+      see_books: See author's books
