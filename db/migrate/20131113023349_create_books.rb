@@ -5,6 +5,8 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :quantity
       t.integer :year
       t.string  :lenguage
+      t.string  :section
+      t.float   :penalty
 
       t.integer :author_id
 
@@ -12,5 +14,6 @@ class CreateBooks < ActiveRecord::Migration
     end
 
       add_index :books, [:name, :author_id]
+      add_index :books, :section
   end
 end

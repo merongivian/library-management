@@ -1,0 +1,12 @@
+%h1 Orders from Section #{current_user.section}
+
+%table.table.table-striped
+  %thead
+    %th Book
+    %th Order Date
+    %th Pick Date
+    %th Penalty
+    %th Status
+    %th Action
+  %tbody
+    = render partial: 'order', collection: @section_orders

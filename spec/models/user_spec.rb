@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+  	it { should have_many :orders }
+  	it { should have_many(:books).through :orders }
+  end
 end

@@ -1,0 +1,5 @@
+%tr
+  %td= order.name
+  %td= order.status
+  - if order.status == "never returned"
+    %td= order.total_penalty

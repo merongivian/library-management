@@ -1,0 +1,17 @@
+%tr
+  %td= order.name
+  %td= order.order_date
+  %td= order.pick_date
+  - if order.status == "never returned"
+    %td= order.total_penalty
+  - else
+    %td none
+  %td= order.status
+  - if order.status == "never picked up"
+    %td= link_to "delete", book_order_path( Book.find_by(name: order.name), id: order.id ), method: :delete
+  - elsif order.status.include? "days left to return"
+    %td= link_to "return", book_order_path( Book.find_by(name: order.name), id: order.id ), method: :delete
+  - elsif order.status.include? "days left to pick"
+    %td= link_to "picked", book_order_path( Book.find_by(name: order.name), id: order.id, picked: true ), method: :put
+  - elsif order.status == "never returned"
+    %td= link_to "return with penalty", book_order_path( Book.find_by(name: order.name), id: order.id ), method: :delete

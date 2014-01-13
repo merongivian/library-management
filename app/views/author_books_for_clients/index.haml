@@ -1,0 +1,10 @@
+%h1 Books written by #{@author.name}
+
+%table.table.table-striped
+  %thead
+    %th= t('.year')
+    %th= t('.title')
+    %th= t('.lenguage')
+    %th= t('.availability')
+  %tbody
+    = render partial: 'book', collection: @books

@@ -7,5 +7,10 @@ FactoryGirl.define do
     confirmation_sent_at { Time.now - 3.seconds }
     confirmed_at { Time.now }
     updated_at { Time.now }
+
+    trait :librarian do
+      librarian true
+      section 'Art-3-5'
+    end
   end
 end

@@ -1,0 +1,5 @@
+%tr
+  %td= book.year
+  %td= book.name
+  %td= book.lenguage
+  %td= link_to 'Borrow', book_orders_path(book_id: book.id), confirm: 'Do you want to borrow this book?', method: :post

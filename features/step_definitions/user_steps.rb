@@ -56,3 +56,11 @@ end
 When /^I follow "([^"]*)"$/ do |link|
   click_link link
 end
+
+When /^I confirm popup$/ do
+  page.driver.browser.switch_to.alert.accept
+end
+
+When /^I wait (\d+) seconds$/ do |seconds|
+  sleep seconds.to_i
+end

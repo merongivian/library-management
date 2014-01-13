@@ -19,3 +19,9 @@ en:
       name: Name
       books: Books
       see_books: See author's books
+  author_books_for_clients:
+    index:
+      title: Title
+      year: Year
+      lenguage: Lenguage
+      availability: Availability

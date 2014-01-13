@@ -27,7 +27,8 @@ end
 group :developmet, :test do
   gem 'quiet_assets'
   gem 'shoulda-matchers'
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails', '~> 2.14'
+  gem 'capybara'
 end
 
 group :test do
@@ -35,7 +36,6 @@ group :test do
   gem 'foreigner-matcher'
   gem 'shoulda-matchers'
   gem 'cucumber-rails', '~> 1.4.0'
-  gem 'webrat', '~> 0.7.3'
   gem "selenium-webdriver", "~> 2.37.0"
   gem 'database_cleaner'
 end

@@ -1,0 +1,9 @@
+%h1 My Orders
+
+%table.table.table-striped
+  %thead
+    %th= t('.book')
+    %th= t('.status')
+    %th= t('.penalty')
+  %tbody
+    = render partial: 'order', collection: @client_orders
