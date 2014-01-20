@@ -12,10 +12,12 @@ Scenario: Sign up
   Then I should be a member
   And I should see a success sign up message
 
+@javascript
 Scenario: Sign in as a member
   And I have an account
   When I follow "Sign In"
   And I sign in with my information
+  And I wait 1000 seconds
   #Then I should be in my user page
   #And I should see my user menu
   And I should see a success sign in message

@@ -3,6 +3,11 @@ class AuthorBooksForClientsController < AuthenticatedUsersController
 
   def index
   	@books = @author.books
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @books }
+    end
   end
 
   private

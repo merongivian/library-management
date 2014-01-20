@@ -28,7 +28,7 @@ Then(/^I should see list with books and statuses$/) do
 end
 
 Given(/^I am a librarian$/) do
-  @user = FactoryGirl.create :user, :librarian
+  @user = FactoryGirl.create :user, :librarian, section: 'Art-3-5'
 end
 
 When(/^I go to books from my section page$/) do
@@ -37,6 +37,22 @@ end
 
 Then(/^I should see a list with books borrowed from my section$/) do
   expect(page).to have_content "la casa de los espiritus"
+end
+
+When(/^I have a borrowed book from my section$/) do
+  FactoryGirl.create :order
+end
+
+When(/^The has not been picked up yet$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I select "(.*?)"$/) do |link|
+  click_link link
+end
+
+Then(/^I should see a book picked message$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 When(/^I sign in$/) do

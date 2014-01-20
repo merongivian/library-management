@@ -17,6 +17,7 @@ Feature: Getting some books
     And I confirm popup
     Then I should see a message showing that you have to pick the book
 
+  @javascript
   Scenario: List of my borrowed books
     Given I have borrowed a book
     When I go to my borrowed books page
@@ -32,13 +33,14 @@ Feature: Getting some books
     #And I wait 10000 seconds
     Then I should see a list with books borrowed from my section
 
+  @javascript
   Scenario: Librarian marks set an order as picked-up
-    Given I am signed out
+    Given I follow "Sign Out"
     And I am a librarian
     And I am signed in
     When I go to books from my section page
-    And I have a borrowed book
-    And The has not been picked up yet
+    And I have a borrowed book from my section
+    #And I wait 1000 seconds
     And I select "picked"
     And I follow "Yes"
     Then I should see a book picked message
