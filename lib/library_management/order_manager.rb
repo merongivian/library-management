@@ -1,7 +1,5 @@
 module LibraryManagement
   class OrderManager
-  	PICK_DAYS = 1.week
-  	LOAN_DAYS = 4.weeks
 
   	attr_reader :name, :id, :order_date, :pick_date, :penalty, :picked
 
@@ -18,6 +16,8 @@ module LibraryManagement
       @penalty = order.book.penalty
       @picked  = order.picked
       @id = order.id
+      @pick_days = order.pick_days
+      @loan_days = order.loan_days
   	end
 
   	def self.transform_orders(orders)
